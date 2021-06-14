@@ -1,0 +1,27 @@
+{
+    "name": "elvenstar/statamic-typesense",
+    "description": "Typesense driver for Statamic v3 search engine",
+    "autoload": {
+        "psr-4": {
+            "Elvenstar\\StatamicTypesense\\": "src"
+        }
+    },
+    "extra": {
+        "statamic": {
+            "name": "Statamic Typesense",
+            "description": "Statamic Typesense Driver",
+            "editions": ["free"]
+        },
+        "laravel": {
+            "providers": [
+                "Elvenstar\\StatamicTypesense\\ServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "typesense/typesense-php": "^4.6"
+    },
+    "require-dev": {
+        "guzzlehttp/guzzle": "^7.0.1"
+    }
+}
