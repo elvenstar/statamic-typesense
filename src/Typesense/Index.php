@@ -88,10 +88,16 @@ class Index extends BaseIndex
             $fields = config("statamic.search.indexes.{$this->name}.fields");
             $query_by = implode(', ', $fields);
 
-            $response = $this->getIndex()->documents->search([
+            $search_query = [
                 'q'         => $query,
                 'query_by'  => $query_by,
-            ]);
+            ];
+
+            if (str_contains($query_by, 'content')) {
+                $search_query['exclude_fields'] = 'content';
+            }
+
+            $response = $this->getIndex()->documents->search($search_query);
         } catch (TypesenseClientError $e) {
             $this->handleTypesenseException($e);
         }
@@ -111,10 +117,18 @@ class Index extends BaseIndex
                 'searches' => collect(config('statamic.search.indexes'))->map(function ($item, $key) {
                     // typesense requires each search to specify the query_by fields,
                     // use the fields specified in the config file for each index.
-                    return [
+                    $query_by = implode(', ', $item['fields']);
+                    
+                    $search_query = [
                         'collection' => $key,
-                        'query_by' => implode(', ', $item['fields'])
+                        'query_by' => $query_by,
                     ];
+                    
+                    if (str_contains($query_by, 'content')) {
+                        $search_query['exclude_fields'] = 'content';
+                    }
+                    
+                    return $search_query;
                 })->values()->all(),
             ];
 
