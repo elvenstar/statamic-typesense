@@ -14,6 +14,12 @@ The Typesense library also requires a Guzzle adapter, install the appropriate on
 composer require php-http/guzzle7-adapter
 ```
 
+Publish the `typesense.php` config file we will use for configuration:
+
+```
+php artisan vendor:publish --tag="statamic-typesense"
+```
+
 Add the following variables to your env file:
 
 ```txt

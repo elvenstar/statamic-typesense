@@ -22,9 +22,11 @@ class ServiceProvider extends AddonServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/typesense.php', 'typesense');
 
-        $this->publishes([
-            __DIR__.'/../config/typesense.php' => config_path('typesense.php'),
-        ]);
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/typesense.php' => config_path('typesense.php'),
+            ], 'statamic-typesense');
+        }
 
         return $this;
     }
