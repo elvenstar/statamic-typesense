@@ -125,3 +125,7 @@ To get around this I recommend keeping a `default` search index that works on th
 ```
 
 Then with [connect indexes](https://statamic.dev/search#connecting-indexes) you can use Typesense when you're browsing a specific collection or on the front-end you can use a javascript client to query the results in Typesense.
+
+### Front-end examples
+1. [Single-index search](https://gist.github.com/tao/b827a4c3a4c0fad06fa52eee4208f0cc)
+2. [Multi-index search](https://gist.github.com/tao/a40862ecc19043e977a6dbb93f13badb)
