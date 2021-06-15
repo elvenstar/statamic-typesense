@@ -1,4 +1,4 @@
-# Statamic Typesense Search Plugin
+# Statamic Typesense Search Driver
 
 Typesense is a *relatively new* search engine and the driver code may change as new features are developed. This is still very much a beta or preview until the next typesense release when some of the quirks will be fixed.
 
