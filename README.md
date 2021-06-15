@@ -78,7 +78,7 @@ If you want to add more advanced options such as facets or sort order, then you 
     ],
 ```
 
-These options will be merged with the auto schema when the index is created on Typesense:
+These options will be merged with the default schema when the index is created on Typesense:
 
 ```json
 {
@@ -100,8 +100,9 @@ Only the fields you have defined in the `indexes` in the `config/static/search.p
 
 ### Quirks
 
-1. Due to the fact that Typesense requires the schema to be defined before inserting data, if you update the blueprint and fields in a Statamic collection -- you'll need to delete the collection on Typesense and create it again with the new schema.
+1. Typesense requires the schema to be defined before inserting data, if you update the blueprint and fields in Statamic -- you'll need to delete the collection on Typesense and create it again with the new schema.
 2. Typesense returns all fields data, so if your `content` field is large it can make the search results payload quite large (this should be fixed in the next release).
+3. Typesense with multiple-nodes hasn't been tested yet.
 
 
 ### Multisearch Quirks
