@@ -2,6 +2,8 @@
 
 Typesense is a *relatively new* search engine and the driver code may change as new features are developed. This is still very much a beta or preview until the next typesense release when some of the quirks will be fixed.
 
+***Disclaimer: It's a dev release. I would not recommend using this in production until more testing has been done and some core bugs have been resolved.***
+
 ### Installation
 
 ```bash
