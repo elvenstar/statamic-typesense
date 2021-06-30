@@ -9,6 +9,7 @@ use Illuminate\Support\Arr;
 use Statamic\Search\Documents;
 use Statamic\Search\Index as BaseIndex;
 use Typesense\Exceptions\TypesenseClientError;
+use Typesense\Exceptions\ObjectNotFound;
 
 class Index extends BaseIndex
 {
@@ -58,7 +59,11 @@ class Index extends BaseIndex
 
     protected function deleteIndex()
     {
-        $this->getIndex()->delete();
+        try {
+            $this->getIndex()->delete();
+        } catch (ObjectNotFound $e) {
+            // ignore if index not found
+        }
     }
 
     public function update()
